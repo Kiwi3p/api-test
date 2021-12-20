@@ -9,16 +9,23 @@ interface Props {
   data?: any;
   goodResponse?: any;
   jobs?: any;
+  departments?: any;
+}
+
+interface Item {
+  departments?: any;
+  name?: any;
+  title?: any;
 }
 
 const Home: NextPage<Props> = () => {
-  const [jobs, setJobs] = useState([]);
-  const [department, setDepartment] = useState([]);
-  const [selection, setSelection] = useState([]);
+  const [jobs, setJobs] = useState<Item[]>([]);
+  const [department, setDepartment] = useState<Item[]>([]);
+  const [selection, setSelection] = useState<Item[]>([]);
   const [checked, setChecked] = useState(false);
   
 
-  function toggle(value){
+  function toggle(value:any){
     return !value;
   }
 
