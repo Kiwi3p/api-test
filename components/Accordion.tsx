@@ -33,7 +33,7 @@ export const AccordionPage = (props: any) => {
                     rel="noreferrer"
                     target="_blank"
                     href={item.absolute_url}
-                    className="up py-2 button-width px-5 text-white flex justify-center bg-blue-800 rounded-full lg:text-xl md:text-base sm:text-sm hover:bg-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex ..."
+                    className="up py-2 button-width px-5 text-white flex justify-center button-color rounded-full lg:text-xl md:text-base sm:text-sm hover:bg-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex ..."
                   >
                     Apply Now
                   </a>
