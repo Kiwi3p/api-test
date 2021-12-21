@@ -2,12 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Accord-Regular';
+  src: url('../public/assets/Accord-Regular.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('../public/assets/Inter-Regular.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.accord {
+  font-family:'Accord-Regular';
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+ul {
+  font-family:'Inter-Regular';
 }
 
 a {
