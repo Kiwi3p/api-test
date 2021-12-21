@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "aos/dist/aos.css";
-import { AccordionPage } from "../components/Accordion";
-import LottieAnimation from "../components/LottieAnimation";
+import Checkboxes from "../components/Checkboxes";
 
 // const axios = require("axios");
 
@@ -29,7 +28,6 @@ const Home: NextPage<Props> = () => {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState<Item[]>([]);
   const [department, setDepartment] = useState<Item[]>([]);
-  const [selection, setSelection] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -51,79 +49,11 @@ const Home: NextPage<Props> = () => {
     });
   }, []);
 
-  console.log(jobs);
-
-  let deptFilter = jobs.filter(
-    (item) => item.departments[0].name === selection
-  );
-
   //write function for if department on left is selected equals jobs.data.departments, filter
 
   return (
     <div className="App">
-      {/* <div>
-        {newYork.map((item, index) => {
-          console.log(newYork);
-          return <li key={index}>{item.title}</li>;
-        })}
-      </div> */}
-      <div className="flex lg:flex-row flex-col">
-        <div className="lg:m-20 p-5 lg:w-96">
-          <h1 className="inter text-base mb-4">Departments</h1>
-          <ul>
-            {department.map((item, index) => {
-              return (
-                <>
-                  {/* {console.log("selection-id", selection)} */}
-                  <li key={index}>
-                    <label
-                      id={item.id}
-                      className="check-container center-radio"
-                    >
-                      <input
-                        type="radio"
-                        name={`selection`}
-                        onClick={() => setSelection(item.name)}
-                        id={item.id}
-                        className="check-radio bg-blue text-blue"
-                      />
-                      <span className="checkmark"></span>
-                      <span className="lg:whitespace-nowrap text-sm relative bt-2px">
-                        {item.name}
-                      </span>
-                    </label>
-                  </li>
-                </>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="my-20 lg:mr-32 view-width">
-          {/* {jobs.filter((item) => item.departments[0].name === selection)} */}
-          {loading ? (
-            <div>
-              <LottieAnimation />
-              Loading
-            </div>
-          ) : (
-            <>
-              {selection == null ? (
-                <>
-                  {/* {jobs.map((item, index) => {
-                // console.log(jobs);
-                return <li key={index}>{item.title}</li>;
-              })} */}
-                  <AccordionPage data={jobs} />
-                </>
-              ) : (
-                <>
-                  <AccordionPage data={deptFilter} />
-                </>
-              )}
-            </>
-          )}
-        </div>
-      </div>
+      <Checkboxes data={department} />
     </div>
   );
 };

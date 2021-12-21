@@ -1,5 +1,5 @@
 import { useLottie } from "lottie-react";
-import dogLoad from "../animations/dog-load.json"
+import barLoad from "../animations/loading-bar.json"
 
 interface LottieProps {
     animationData?: any;
@@ -7,7 +7,7 @@ interface LottieProps {
 
 const LottieAnimation: React.FC<LottieProps> = () => {
   const options = {
-    animationData: dogLoad,
+    animationData: barLoad,
     loop: true,
     autoplay: true,
   };
