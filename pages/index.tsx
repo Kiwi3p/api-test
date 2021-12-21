@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { decode } from "html-entities";
-import parse from "html-react-parser";
+
+import "aos/dist/aos.css";
 import { AccordionPage } from "../components/Accordion";
+import LottieAnimation from "../components/LottieAnimation";
 
 // const axios = require("axios");
 
@@ -13,25 +13,33 @@ interface Props {
   goodResponse?: any;
   jobs?: any;
   departments?: any;
+  animationData?: any;
+  loop?: any;
+  autoplay?: any;
 }
 
 interface Item {
   departments?: any;
   name?: any;
   title?: any;
+  id?: any;
 }
 
 const Home: NextPage<Props> = () => {
+  const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState<Item[]>([]);
   const [department, setDepartment] = useState<Item[]>([]);
   const [selection, setSelection] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
+
     axios({
       method: "get",
       url: "https://boards-api.greenhouse.io/v1/boards/via/jobs?utm_medium=email&utm_source=TakeHomeTest&content=true",
     }).then(function (response) {
       setJobs(response.data.jobs);
+      setLoading(false);
       // console.log(response);
     });
     axios({
@@ -69,7 +77,7 @@ const Home: NextPage<Props> = () => {
                   {/* {console.log("selection-id", selection)} */}
                   <li key={index}>
                     <label
-                      for={item.id}
+                      id={item.id}
                       className="check-container center-radio"
                     >
                       <input
@@ -92,17 +100,26 @@ const Home: NextPage<Props> = () => {
         </div>
         <div className="my-20 lg:mr-32 view-width">
           {/* {jobs.filter((item) => item.departments[0].name === selection)} */}
-          {selection == null ? (
+          {loading ? (
+            <div>
+              <LottieAnimation />
+              Loading
+            </div>
+          ) : (
             <>
-              {/* {jobs.map((item, index) => {
+              {selection == null ? (
+                <>
+                  {/* {jobs.map((item, index) => {
                 // console.log(jobs);
                 return <li key={index}>{item.title}</li>;
               })} */}
-              <AccordionPage data={jobs} />
-            </>
-          ) : (
-            <>
-              <AccordionPage data={deptFilter} />
+                  <AccordionPage data={jobs} />
+                </>
+              ) : (
+                <>
+                  <AccordionPage data={deptFilter} />
+                </>
+              )}
             </>
           )}
         </div>
