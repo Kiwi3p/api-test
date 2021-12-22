@@ -29,14 +29,14 @@ const Checkboxes: React.FC<Props> = (props) => {
 
   // This is my handler method that gets triggered when a checkbox get's checked/unchecked
   // ..and toggles the state of the checkbox
-  const handleCheckboxChange = (data:any) => {
+  const handleCheckboxChange = (data: any) => {
     const isChecked = checkedCheckboxes.some(
-      (checkedCheckbox:any) => checkedCheckbox.name === data.name
+      (checkedCheckbox: any) => checkedCheckbox.name === data.name
     );
     if (isChecked) {
       setCheckedCheckboxes(
         checkedCheckboxes.filter(
-          (checkedCheckbox:any) => checkedCheckbox.name !== data.name
+          (checkedCheckbox: any) => checkedCheckbox.name !== data.name
         )
       );
     } else {
@@ -64,73 +64,77 @@ const Checkboxes: React.FC<Props> = (props) => {
   }, []);
 
   const receivedData = props.data;
-  let processedData = (checkedCheckboxes.map((data) => data));
+  let processedData = checkedCheckboxes.map((data) => data);
   console.log("check processed -", processedData);
 
   //   let checkFilterHardCode = ( jobs[1].departments[0].name === processedData[0]);
-//   let checkFilter = jobs.filter(
-//     (item) =>
-//       item.departments[0].name ===
-//       processedData.includes(item.departments[0].name)
-//   );
+  //   let checkFilter = jobs.filter(
+  //     (item) =>
+  //       item.departments[0].name ===
+  //       processedData.includes(item.departments[0].name)
+  //   );
 
-  const myArrayFiltered = jobs.filter((el):any => {
-    return processedData.some((f:any) => {
+  const myArrayFiltered = jobs.filter((el): any => {
+    return processedData.some((f: any) => {
       return f.name === el.departments[0].name;
     });
   });
 
-//   console.log("check checkBoxes -", processedData);
-//   // console.log("check filter -", checkFilterHardCode);
-//   console.log("check filter -", myArrayFiltered);
-//   console.log("check jobs -", jobs);
+  //   console.log("check checkBoxes -", processedData);
+  //   // console.log("check filter -", checkFilterHardCode);
+  //   console.log("check filter -", myArrayFiltered);
+  //   console.log("check jobs -", jobs);
 
   return (
     <>
       <div className="flex lg:flex-row flex-col">
         <div className="lg:m-20 p-5 lg:w-96">
-          <h1 className="inter text-base mb-4">Departments</h1>
-          <ul>
-            {receivedData?.map((data:any, index:any) => {
-              return (
-                <>
-                  {/* {console.log("selection-id", selection)} */}
-                  <li key={index}>
-                    <label
-                      id={data.id}
-                      className="check-container center-radio"
-                    >
-                      <input
-                        key={`cb-${index}`}
-                        value={data.value}
-                        type="checkbox"
-                        checked={checkedCheckboxes.some(
-                          (checkedCheckbox:any) =>
-                            checkedCheckbox.name === data.name
-                        )}
-                        onChange={() => handleCheckboxChange(data)}
-                      />
-                      <span className="checkmark"></span>
-                      <span className="lg:whitespace-nowrap text-sm relative bt-2px">
-                        {data.name}
-                      </span>
-                    </label>
-                  </li>
-                </>
-              );
-            })}
-          </ul>
+          <div>
+            <div className="fixed">
+              <h1 className="inter text-base mb-4">Departments</h1>
+              <ul className="overflow-scroll">
+                {receivedData?.map((data: any, index: any) => {
+                  return (
+                    <>
+                      {/* {console.log("selection-id", selection)} */}
+                      <li key={index}>
+                        <label
+                          id={data.id}
+                          className="check-container center-radio"
+                        >
+                          <input
+                            key={`cb-${index}`}
+                            value={data.value}
+                            type="checkbox"
+                            checked={checkedCheckboxes.some(
+                              (checkedCheckbox: any) =>
+                                checkedCheckbox.name === data.name
+                            )}
+                            onChange={() => handleCheckboxChange(data)}
+                          />
+                          <span className="checkmark"></span>
+                          <span className="lg:whitespace-nowrap text-sm relative bt-2px">
+                            {data.name}
+                          </span>
+                        </label>
+                      </li>
+                    </>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
         <div className="my-20 lg:mr-32 view-width">
-        {loading ? (
+          {loading ? (
             <div>
               <LottieAnimation />
               Loading
             </div>
           ) : (
             <>
-            {console.log("array-length" ,checkedCheckboxes.length)}
-              {(checkedCheckboxes.length === 0) ? (
+              {console.log("array-length", checkedCheckboxes.length)}
+              {checkedCheckboxes.length === 0 ? (
                 <>
                   <AccordionPage data={jobs} />
                 </>
