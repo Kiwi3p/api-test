@@ -90,7 +90,7 @@ const Checkboxes: React.FC<Props> = (props) => {
       <div className="flex lg:flex-row flex-col">
         <div className="lg:m-20 p-5 lg:w-96">
           <div>
-            <div className="fixed">
+            <div className="lg:fixed">
               <h1 className="inter text-base mb-4">Departments</h1>
               <ul className="overflow-scroll">
                 {receivedData?.map((data: any, index: any) => {
