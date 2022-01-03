@@ -134,9 +134,36 @@ a {
   background-color: #000072;
 }
 
+.display-mobile {
+  display: none;
+}
+
+.display-desktop {
+  display: block;
+}
+
+.via-blue {
+  background-color: #01A8E2;
+}
+
+
 @media only screen and (max-width: 768px) {
   .view-width {
     width: 100vw;
     margin-left: 10px;
   }
+
+  .display-mobile {
+    display: block;
+  }
+
+  .display-desktop {
+    display: none;
+  }
+
+  .bt-2px {
+    position: relative;
+    bottom: 4px;
+  }
+
 }

@@ -66,12 +66,18 @@ export const AccordionPage = (props: any) => {
           );
         })}
       </Accordion>
-      {console.log(props.data.length)}
-      {console.log(itemsToShow)}
+      {/* {console.log(props.data.length)}
+      {console.log(itemsToShow)} */}
       {itemsToShow >= props.data.length ? (
         <></>
       ) : (
-        <button className="up mt-4 py-2 button-width px-5 text-white flex justify-center button-color rounded-full lg:text-xl md:text-base sm:text-sm hover:bg-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex ..." data-aos="fade-up" onClick={() => setItemsToShow(itemsToShow + 6)}>expand</button>
+        <button
+          className="up mt-4 py-2 button-width px-5 text-white flex justify-center button-color rounded-full lg:text-xl md:text-base sm:text-sm hover:bg-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex ..."
+        
+          onClick={() => setItemsToShow(itemsToShow + 6)}
+        >
+          expand
+        </button>
       )}
     </>
   );
