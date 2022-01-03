@@ -76,7 +76,7 @@ export const AccordionPage = (props: any) => {
         
           onClick={() => setItemsToShow(itemsToShow + 6)}
         >
-          expand
+          see more
         </button>
       )}
     </>
