@@ -4,6 +4,7 @@ import axios from "axios";
 
 import "aos/dist/aos.css";
 import Checkboxes from "../components/Checkboxes";
+import Head from "next/head";
 
 // const axios = require("axios");
 
@@ -53,6 +54,10 @@ const Home: NextPage<Props> = () => {
 
   return (
     <div className="App">
+      <Head>
+        <title>Greenhouse Api Test</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Checkboxes data={department} />
     </div>
   );
