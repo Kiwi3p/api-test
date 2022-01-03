@@ -1,7 +1,18 @@
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 import { AccordionPage } from "./Accordion";
+// import JobsLength from "./JobsLength";
 import LottieAnimation from "./LottieAnimation";
+// import loadable from '@loadable/component'
+
+const JobsLength = dynamic(() => import("./JobsLength"), {
+  loading: () => (
+    <p>
+      loacting data from server... <br/>loading...
+    </p>
+  ),
+});
 
 interface Props {
   data?: any;
@@ -127,16 +138,14 @@ const Checkboxes: React.FC<Props> = (props) => {
         </div>
         <div className="my-20 lg:mr-32 view-width">
           {loading ? (
-            <div>
-              <LottieAnimation />
-              Loading
-            </div>
+            <div>loading...</div>
           ) : (
             <>
               {console.log("array-length", checkedCheckboxes.length)}
               {checkedCheckboxes.length === 0 ? (
                 <>
-                  <AccordionPage data={jobs} />
+                  <JobsLength />
+                  {/* <AccordionPage data={jobs} /> */}
                 </>
               ) : (
                 <>
