@@ -99,7 +99,7 @@ const Checkboxes: React.FC<Props> = (props) => {
   return (
     <>
       <div className="flex lg:flex-row flex-col">
-        <div className="lg:m-20 p-5 lg:w-96">
+        <div className="lg:mx-20 lg:my-8 p-5 lg:w-96">
           <div>
             <div className="lg:fixed">
               <h1 className="inter text-base mb-4">Departments</h1>
